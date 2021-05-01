@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Player, PlayersArray } from "../../utility/game/classes/Players";
 import { checkWin, initializeMatrix } from "../../utility/game/utilityFunctions";
 import Cell from "./Cell";
 
-export default function Board({
-    width = 10,
-    height = 10,
-    players = new PlayersArray(new Player("Player 1", "X"), new Player("Player 2", "O")),
-}) {
+export default function Board({ width, height, players }) {
     const [board, setBoard] = useState(initializeMatrix(height, width));
     const [currentPlayer, setCurrentPlayer] = useState(players[0]);
     const [isGameRunning, setIsGameRunning] = useState(true);
@@ -54,7 +49,7 @@ export default function Board({
                                         style={{
                                             height: `${90 / height}vmin`,
                                             width: `${90 / height}vmin`,
-                                            fontSize: `${60 / (90 / height)}vmin`,
+                                            fontSize: `${(90 / height) * 0.7}vmin`,
                                         }}
                                     />
                                 );
