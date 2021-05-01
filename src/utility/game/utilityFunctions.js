@@ -36,7 +36,6 @@ export const checkWin = (board, startingPoint, sign) => {
                 isInBoard = currentPoint.x >= 0 && currentPoint.x < board.length;
                 inLine++;
             }
-            console.log(inLine);
             if (inLine >= 5) {
                 return true;
             }
