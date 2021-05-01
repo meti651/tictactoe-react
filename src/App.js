@@ -19,10 +19,8 @@ function App() {
                         <Menu
                             players={players}
                             setPlayers={setPlayers}
-                            height={height}
-                            setHeight={setHeight}
-                            width={width}
-                            setWidth={setWidth}
+                            heightState={{height: height, setHeight: setHeight}}
+                            widthState={{width: width, setWidth: setWidth}}
                         />
                     </Route>
                     <Route path="/board">

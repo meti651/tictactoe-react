@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function Menu({ players, setPlayers, height, setHeight, width, setWidth }) {
+export default function Menu({ players, setPlayers, heightState, widthState }) {
     const handlePlayerPropChange = (event, index) => {
         const property = event.target.getAttribute("name");
         setPlayers((currentPlayers) =>
@@ -43,15 +43,15 @@ export default function Menu({ players, setPlayers, height, setHeight, width, se
                     <input
                         name="height"
                         type="number"
-                        value={height}
-                        onChange={({ target }) => setHeight(() => +target.value)}
+                        value={heightState.height}
+                        onChange={({ target }) => heightState.setHeight(() => +target.value)}
                     />
                     <label htmlFor="width">Width</label>
                     <input
                         name="width"
                         type="number"
-                        value={width}
-                        onChange={({ target }) => setWidth(() => +target.value)}
+                        value={widthState.width}
+                        onChange={({ target }) => widthState.setWidth(() => +target.value)}
                     />
                 </div>
                 <Link to="/board">Play</Link>
