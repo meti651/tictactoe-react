@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import BoardPoint from "../../utility/game/classes/Point";
 
+import * as Styles from "./Cell.module.scss";
+
 export default function Cell({ value, rowIndex, columnIndex, style, playerMove, playerSign, isGameRunning }) {
     const [sign, setSign] = useState("");
 
@@ -16,7 +18,7 @@ export default function Cell({ value, rowIndex, columnIndex, style, playerMove, 
     }, [value]);
 
     return (
-        <div style={{ border: "1px solid #000", display: "grid", placeItems: "center", ...style }} onClick={placeSign}>
+        <div className={`${Styles.container} ${sign && Styles.occupied}`} style={{ ...style }} onClick={placeSign}>
             {sign}
         </div>
     );
