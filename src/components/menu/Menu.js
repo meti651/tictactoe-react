@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import { PlayersArray } from "../../utility/game/classes/Players";
 
 export default function Menu({ players, setPlayers, heightState, widthState }) {
     const handlePlayerPropChange = (event, index) => {
@@ -9,6 +10,15 @@ export default function Menu({ players, setPlayers, heightState, widthState }) {
                 currentIndex === index ? { ...player, [property]: event.target.value } : player
             )
         );
+    };
+
+    const addPlayer = () => {
+        setPlayers((state) => new PlayersArray(...state, { name: `Player ${state.length + 1}`, sign: "L" }));
+    };
+
+    const deletePlayer = (index) => {
+        const newPlayers = players.filter((player, playerIndex) => playerIndex !== index);
+        setPlayers(new PlayersArray(...newPlayers));
     };
 
     return (
@@ -34,9 +44,17 @@ export default function Menu({ players, setPlayers, heightState, widthState }) {
                                     value={player.sign}
                                     onChange={(event) => handlePlayerPropChange(event, index)}
                                 />
+                                <div>
+                                    <button onClick={() => deletePlayer(index)} disabled={index < 2}>
+                                        x
+                                    </button>
+                                </div>
                             </li>
                         ))}
                 </ul>
+                <div>
+                    <button onClick={addPlayer}>+ Add player</button>
+                </div>
                 <div>
                     <h2>Set board size:</h2>
                     <label htmlFor="height">Height</label>
