@@ -1,0 +1,92 @@
+@use "sass:map";
+@import "../../variables";
+@import "../../mixins";
+
+#container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    width: 100%;
+    min-height: 100vh;
+    background-color: $light;
+}
+
+#cells_wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .dark_cell {
+        background-color: $dark;
+    }
+
+    .light_cell {
+        background-color: $primary-color;
+    }
+}
+
+#board {
+    padding: 16px 0;
+    flex-grow: 1;
+    text-align: center;
+    z-index: 2;
+
+    #board_wrapper {
+        display: inline-block;
+        position: relative;
+    }
+}
+
+#side_menu {
+    padding: 32px;
+    background-color: $dark;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    flex-grow: 1;
+
+    #menu_points {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+
+        & > * {
+            outline: 0;
+            background-color: $light;
+            border: 0;
+            text-decoration: none;
+            color: black;
+            width: 100px;
+            padding: 8px 0;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: padding 0.1s linear, width 0.1s linear;
+            font-weight: bold;
+
+            &:hover {
+                width: 116px;
+                padding: 16px 0;
+            }
+        }
+
+        a:hover {
+            background-color: #b00020;
+        }
+
+        button:hover {
+            background-color: $secondary-color;
+        }
+    }
+}
+
+@include desktop-large {
+    #side_menu {
+        max-width: 220px;
+    }
+}

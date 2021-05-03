@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { checkWin, initializeMatrix } from "../../utility/game/utilityFunctions";
 import Cell from "./Cell";
+import * as Styles from "./Board.module.scss";
 
 export default function Board({ width, height, players }) {
     const [board, setBoard] = useState(initializeMatrix(height, width));
@@ -16,7 +17,6 @@ export default function Board({ width, height, players }) {
         if (isWin) {
             alert(`${currentPlayer.name} win!`);
             setIsGameRunning(false);
-            return;
         }
 
         setCurrentPlayer(players.getNextPlayer(currentPlayer));
@@ -25,44 +25,55 @@ export default function Board({ width, height, players }) {
     const restartGame = () => {
         setBoard(initializeMatrix(height, width));
         setIsGameRunning(true);
+        setCurrentPlayer(players[0]);
     };
 
     return (
-        <div style={{ height: "100%" }}>
-            <h1>
-                {currentPlayer.name}: {currentPlayer.sign}
-            </h1>
-            {board &&
-                board.map((row, rowIndex) => {
-                    return (
-                        <div key={rowIndex} style={{ display: "flex", flexDirection: "row" }}>
-                            {row.map((column, columnIndex) => {
-                                return (
-                                    <Cell
-                                        value={column}
-                                        key={`${rowIndex}_${columnIndex}`}
-                                        rowIndex={rowIndex}
-                                        columnIndex={columnIndex}
-                                        playerMove={playerMove}
-                                        playerSign={currentPlayer.sign}
-                                        isGameRunning={isGameRunning}
-                                        style={{
-                                            height: `${90 / height}vmin`,
-                                            width: `${90 / height}vmin`,
-                                            fontSize: `${(90 / height) * 0.7}vmin`,
-                                        }}
-                                    />
-                                );
-                            })}
-                        </div>
-                    );
-                })}
-            {!isGameRunning && (
-                <div>
+        <div id={Styles.container}>
+            <div id={Styles.side_menu}>
+                <h2>
+                    {currentPlayer.name}: {currentPlayer.sign}
+                </h2>
+                <div id={Styles.menu_points}>
                     <button onClick={restartGame}>Restart</button>
                     <Link to="/">Quit</Link>
                 </div>
-            )}
+            </div>
+            <div id={Styles.board}>
+                <div id={Styles.board_wrapper}>
+                    {board &&
+                        board.map((row, rowIndex) => {
+                            return (
+                                <div key={rowIndex} id={Styles.cells_wrapper}>
+                                    {row.map((column, columnIndex) => {
+                                        return (
+                                            <div
+                                                key={`${rowIndex}_${columnIndex}`}
+                                                className={
+                                                    (columnIndex + rowIndex) % 2 ? Styles.dark_cell : Styles.light_cell
+                                                }
+                                            >
+                                                <Cell
+                                                    value={column}
+                                                    rowIndex={rowIndex}
+                                                    columnIndex={columnIndex}
+                                                    playerMove={playerMove}
+                                                    playerSign={currentPlayer.sign}
+                                                    isGameRunning={isGameRunning}
+                                                    style={{
+                                                        height: `${90 / height}vmin`,
+                                                        width: `${90 / height}vmin`,
+                                                        fontSize: `${(90 / height) * 0.7}vmin`,
+                                                    }}
+                                                />
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            );
+                        })}
+                </div>
+            </div>
         </div>
     );
 }
