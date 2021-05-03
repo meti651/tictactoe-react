@@ -1,0 +1,32 @@
+@use "sass:map";
+@import "./variables";
+
+@mixin phone {
+    @media (max-width: map.get($break-point, "sm")) {
+        @content;
+    }
+}
+
+@mixin tablet-portrait {
+    @media (min-width: map-get($break-point, "sm" ) + 1) {
+        @content;
+    }
+}
+
+@mixin tablet-landscape {
+    @media (min-width: map.get($break-point, "md")) {
+        @content;
+    }
+}
+
+@mixin desktop-small {
+    @media (min-width: map.get($break-point, "lg")) {
+        @content;
+    }
+}
+
+@mixin desktop-large {
+    @media (min-width: map.get($break-point, "xl")) {
+        @content;
+    }
+}
