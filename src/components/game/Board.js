@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { checkWin, initializeMatrix } from "../../utility/game/utilityFunctions";
 import Cell from "./Cell";
@@ -9,6 +9,8 @@ export default function Board({ width, height, players }) {
     const [currentPlayer, setCurrentPlayer] = useState(players[0]);
     const [isGameRunning, setIsGameRunning] = useState(true);
 
+    const boardWrapper = useRef();
+
     const playerMove = (target) => {
         board[target.x][target.y] = currentPlayer.sign;
 
@@ -17,6 +19,9 @@ export default function Board({ width, height, players }) {
         if (isWin) {
             alert(`${currentPlayer.name} win!`);
             setIsGameRunning(false);
+            for (let winCell of isWin) {
+                boardWrapper.current.children[winCell.x].children[winCell.y].firstChild.style.border = "2px solid red";
+            }
         }
 
         setCurrentPlayer(players.getNextPlayer(currentPlayer));
@@ -40,7 +45,7 @@ export default function Board({ width, height, players }) {
                 </div>
             </div>
             <div id={Styles.board}>
-                <div id={Styles.board_wrapper}>
+                <div ref={boardWrapper} id={Styles.board_wrapper}>
                     {board &&
                         board.map((row, rowIndex) => {
                             return (
