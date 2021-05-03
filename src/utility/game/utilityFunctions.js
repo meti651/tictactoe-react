@@ -12,18 +12,18 @@ export const checkWin = (board, startingPoint, sign) => {
     for (let xModifier = -1; xModifier <= 0; xModifier++) {
         for (let yModifier = -1; yModifier <= 1; yModifier++) {
             if (xModifier === 0 && yModifier === 0) {
-                return false; // if the function reaches this point, there is no 5 matching signs
+                return null; // if the function reaches this point, there is no 5 matching signs
             }
 
-            let inLine = 0;
+            let inLineCells = [];
             const currentPoint = new BoardPoint(startingPoint.x, startingPoint.y);
 
             let isInBoard = currentPoint.x >= 0 && currentPoint.x < board.length;
             while (isInBoard && board[currentPoint.x][currentPoint.y] === sign) {
+                inLineCells.push(new BoardPoint(currentPoint.x, currentPoint.y));
                 currentPoint.x += xModifier;
                 currentPoint.y += yModifier;
                 isInBoard = currentPoint.x >= 0 && currentPoint.x < board.length;
-                inLine++;
             }
 
             currentPoint.x = startingPoint.x - xModifier;
@@ -31,18 +31,18 @@ export const checkWin = (board, startingPoint, sign) => {
 
             isInBoard = currentPoint.x >= 0 && currentPoint.x < board.length;
             while (isInBoard && board[currentPoint.x][currentPoint.y] === sign) {
+                inLineCells.push(new BoardPoint(currentPoint.x, currentPoint.y));
                 currentPoint.x -= xModifier;
                 currentPoint.y -= yModifier;
                 isInBoard = currentPoint.x >= 0 && currentPoint.x < board.length;
-                inLine++;
             }
-            if (inLine >= 5) {
-                return true;
+            if (inLineCells.length >= 5) {
+                return inLineCells;
             }
         }
     }
 
-    return false;
+    return null;
 };
 
 /**
