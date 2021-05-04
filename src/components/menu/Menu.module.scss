@@ -1,0 +1,161 @@
+@import "../../variables";
+@import "../../mixins";
+
+#container {
+    margin: auto;
+    padding: 16px;
+    box-shadow: 1px 1px 5px black;
+    border-radius: 5px;
+    background-color: $light;
+    max-width: 540px;
+
+    input {
+        background-color: rgba($color: #000000, $alpha: 0.2);
+        outline: none;
+        border: 0;
+        border-bottom: 1px solid $dark;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        padding: 10px;
+        transition: background-color 0.2s linear;
+
+        &:focus {
+            background-color: lighten($color: #000000, $amount: 90%);
+        }
+    }
+
+    ul {
+        padding: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 12px;
+        transform: translateY(40%);
+        width: 100%;
+    }
+
+    li {
+        list-style: none;
+        margin: 16px;
+    }
+
+    h2,
+    h4 {
+        text-align: center;
+        font-weight: bold;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    h4 {
+        font-size: 1.5em;
+    }
+}
+
+form {
+    input {
+        width: 80%;
+    }
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#board_config {
+    border-top: 2px solid $dark;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    button {
+        border: 0;
+        background: transparent;
+        font-size: 16px;
+
+        &:not([disabled]) {
+            cursor: pointer;
+            color: #b00020;
+        }
+    }
+}
+
+#size {
+    display: flex;
+    justify-content: space-between;
+
+    & > div {
+        width: 40%;
+    }
+
+    input {
+        width: 90%;
+    }
+}
+
+#add_player {
+    button {
+        background-color: $primary-color;
+        border-radius: 5px;
+        border: 0;
+        padding: 8px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $secondary-color;
+            color: $light;
+        }
+    }
+}
+
+#play {
+    background-color: $primary-color;
+    font-size: 3em;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    margin: 16px;
+    border-radius: 5px;
+    padding: 8px 0;
+    font-weight: bold;
+
+    &:hover {
+        background-color: $secondary-color;
+        color: $light;
+    }
+}
+
+@include phone {
+    #container {
+        margin-top: 0;
+    }
+}
+
+@include tablet-portrait {
+    #container {
+        margin-top: 0;
+    }
+}
+
+@include tablet-landscape {
+    #container {
+        margin-top: 0;
+    }
+}
+
+@include desktop-small {
+    #container {
+        margin-top: 16px;
+    }
+}
