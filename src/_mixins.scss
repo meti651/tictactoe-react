@@ -8,7 +8,7 @@
 }
 
 @mixin tablet-portrait {
-    @media (min-width: map-get($break-point, "sm" ) + 1) {
+    @media (min-width: map.get($break-point, "sm" ) + 1) {
         @content;
     }
 }
