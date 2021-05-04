@@ -40,13 +40,17 @@
 #side_menu {
     padding: 32px;
     background-color: $dark;
-    width: 220px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 32px;
     flex-grow: 1;
+
+    h2 {
+        font-weight: bold;
+        font-size: 2em;
+    }
 
     #menu_points {
         display: flex;
@@ -68,11 +72,6 @@
             cursor: pointer;
             transition: padding 0.1s linear, width 0.1s linear;
             font-weight: bold;
-
-            &:hover {
-                width: 116px;
-                padding: 16px 0;
-            }
         }
 
         a:hover {

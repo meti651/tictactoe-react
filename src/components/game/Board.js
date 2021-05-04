@@ -66,8 +66,8 @@ export default function Board({ width, height, players }) {
                                                     playerSign={currentPlayer.sign}
                                                     isGameRunning={isGameRunning}
                                                     style={{
-                                                        height: `${90 / height}vmin`,
-                                                        width: `${90 / height}vmin`,
+                                                        height: `${85 / height}vmin`,
+                                                        width: `${85 / height}vmin`,
                                                         fontSize: `${(90 / height) * 0.7}vmin`,
                                                     }}
                                                 />
