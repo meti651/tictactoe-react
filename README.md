@@ -22,6 +22,6 @@ The `components` folder has components for the `Menu`, `Board` and `Cell`.
 
 The `Menu` component is responsible for settuping the board, it is the landing page component.
 
-The `Board` component is responsible for driving the game. It renders the cell, check whether one player wins after a move, change players.
+The `Board` component is responsible for driving the game. It renders the cell, check whether one player wins by placing 5 adjacent signs after a move, change players. There is a possibility to play in teams. The players could have the same signs and the win condition is to have 5 of the same sign adjacent to eachother.
 
 The `Cell` component is just the representation of one cell of the board, it just run the `playerMove` function, and change the sign in its content.
