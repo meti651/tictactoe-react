@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+# Project overview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A tictactoe game. In the game you can add as many player as you want, you can set the board size. In the play phase there is a side menu where you can see which player is up to put its sign, a restart button and a quit button.
 
-## Available Scripts
+The restart button reset the board, the quit button redirect the page to the config page where you can modify the players amount, the players name and sign.
 
-In the project directory, you can run:
+# Getting started
 
-### `yarn start`
+Clone the repository. After that in the project folder run the `npm install` command. It will install all the dependecies that you need.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+After the installation run the `npm start` command, it will start the application in a new tab.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Description
 
-### `yarn test`
+The project is made with React.js. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The `App.js` file setup the routing, and the `components` folder contains the components.
 
-### `yarn build`
+The `utility` folder contains classes for the purpose of better readability and utility functions for checking the win condition and initializing a matrix.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The `components` folder has components for the `Menu`, `Board` and `Cell`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The `Menu` component is responsible for settuping the board, it is the landing page component.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The `Board` component is responsible for driving the game. It renders the cell, check whether one player wins after a move, change players.
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The `Cell` component is just the representation of one cell of the board, it just run the `playerMove` function, and change the sign in its content.
